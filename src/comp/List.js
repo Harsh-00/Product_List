@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
-import data from "../ApiData";
 
 const Items = styled.div`
 	position: relative;
@@ -29,16 +28,13 @@ const Items = styled.div`
 		border-radius: 15px;
 	}
 `;
-const List = () => {
+const List = ({ Data, setData }) => {
 	const perPage = 6;
-
 	const [currPage, setCurrPage] = useState(0);
 
 	const offset = currPage * perPage;
-
-	const currPageData = data.slice(offset, offset + perPage);
-
-	const pageCount = Math.ceil(data.length / perPage) - 1;
+	const currPageData = Data.slice(offset, offset + perPage);
+	const pageCount = Math.ceil(Data.length / perPage) - 1;
 
 	function NextHandler() {
 		setCurrPage(currPage + 1);
