@@ -4,15 +4,24 @@ import styled from "styled-components";
 
 const Card = styled.div`
 	position: relative;
-	background-color: pink;
+	background-color: #f5f5f5;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	border-radius: 30px;
-	padding: 0px 10px;
+	padding: 0px 4px;
 	width: 90%;
 	margin: auto;
+
+	transition: all;
+	transition-timing-function: ease-in-out;
+	transition-duration: 250ms;
+
+	&:hover {
+		box-shadow: 0 0 10px 8px #f99417;
+		transform: scale(1.05);
+	}
 
 	img {
 		max-width: 100%;
@@ -22,8 +31,8 @@ const Card = styled.div`
 	}
 
 	.har {
-		color: green;
-		font-size: larger;
+		color: #4fa095;
+		font-size: 1.5rem;
 		font-weight: bold;
 		margin: 0px;
 		padding: 8px 0;
@@ -32,33 +41,61 @@ const Card = styled.div`
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
-		gap: 3rem;
-		padding: 15px 0;
+		align-items: center;
+		gap: 3.5rem;
+		padding: 15px 5px;
 	}
 
 	.cat {
 		position: absolute;
 		top: -25px;
 		right: 0px;
-		font-size: 15px;
-		background-color: green;
+		font-size: 16px;
+		background-color: #19a7ce;
 		border-radius: 10px;
 		padding: 5px 10px;
 	}
 	.title {
 		padding-top: 20px;
 		text-align: center;
+		height: 1.2rem;
+		padding-bottom: 8px;
 	}
 	.desc {
-		padding: 0 15px;
+		padding: 0 5px;
 		text-align: center;
+		height: 3.5rem;
+		font-size: 18px;
+		opacity: 70%;
 	}
+
 	.rating-cont {
 		text-align: center;
 	}
 	.rating {
 		font-size: 20px;
 		font-weight: bold;
+	}
+
+	.buy {
+		background-color: #19a7ce;
+		border-radius: 10px;
+		padding: 5px 10px;
+		cursor: pointer;
+		transition: all;
+		transition-timing-function: ease-in-out;
+		transition-duration: 150ms;
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		.desc {
+			height: 5rem;
+		}
+		.foot {
+			gap: 0;
+		}
 	}
 `;
 
@@ -85,7 +122,7 @@ const ProductCard = ({ info }) => {
 			<img src={info.image}></img>
 			<div className="foot">
 				<p className="har">${info.price}</p>
-				<button className="btn">Buy Now</button>
+				<div className="buy">Buy Now</div>
 			</div>
 		</Card>
 	);

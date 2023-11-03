@@ -2,94 +2,203 @@ import React from "react";
 import styled from "styled-components";
 
 const Filter = styled.div`
-	background-color: skyblue;
-	flex-grow: 2;
-	min-width: 240px;
+	background-color: #f99417;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	border-right: 4px solid black;
+
+	padding: 1.5rem;
+	padding-top: 4rem;
+	width: 260px;
+
+	.heading1 {
+		margin: 0;
+		margin-left: 3rem;
+		width: 100%;
+		font-size: 2rem;
+		letter-spacing: 3px;
+		font-weight: bold;
+		margin-bottom: 15px;
+	}
+
+	.s {
+		margin-right: 12px;
+	}
+
+	label {
+		font-size: 20px;
+	}
+	input {
+		margin-top: 12px;
+	}
+	@media (max-width: 440px) {
+		position: absolute;
+		opacity: 0;
+	}
 `;
-const Filterbar = ({ sort, setSort }) => {
+const Filterbar = ({ sort, setSort, filter, setFilter }) => {
 	console.log(sort);
 
+	function OrderHandler(e) {
+		setSort((prev) => ({
+			...prev,
+			order: e.target.value,
+		}));
+	}
+
+	function AttriHandler(e) {
+		setSort((prev) => ({
+			...prev,
+			attri: e.target.value,
+		}));
+	}
+
+	function RatingHandler(e) {
+		setFilter((prev) => ({
+			...prev,
+			rating: e.target.value,
+		}));
+	}
+
+	function CatHandler(e) {
+		console.log(filter);
+		//Adding category if it is checked
+		if (e.target.checked)
+			setFilter((prev) => ({
+				...prev,
+				category: [...prev.category, e.target.value],
+			}));
+		// removing category if it is unchecked but present in category array
+		// done by filtering category array
+		else
+			setFilter((prev) => ({
+				...prev,
+				category: prev.category.filter((ele) => ele !== e.target.value),
+			}));
+	}
 	return (
 		<Filter>
 			<div>
-				<p>Sort</p>
-				<label for="order">Sort By:</label>
-				<select id="order" name="order">
-					<option
-						value="asc"
-						onChange={(e) =>
-							setSort([...sort, { order: e.target.value }])
-						}
-					>
-						Low to High
-					</option>
-					<option
-						value="desc"
-						onChange={(e) =>
-							setSort([...sort, { order: e.target.value }])
-						}
-					>
-						High to Low
-					</option>
+				<p className="heading1">Sort</p>
+				<label for="order" className="s">
+					Sort By:
+				</label>
+				<select id="order" name="order" onChange={OrderHandler}>
+					<option value="asc">Low to High</option>
+					<option value="desc">High to Low</option>
 				</select>
 				<br />
 				<input
 					type="radio"
 					value="price"
 					name="sort"
-					onChange={(e) => setSort({ attri: e.target.value })}
-				/>{" "}
-				Price
+					id="price"
+					onChange={AttriHandler}
+				/>
+				<label for="price"> Price</label>
 				<br />
 				<input
 					type="radio"
-					value="rating"
+					value="rate"
 					name="sort"
-					onChange={(e) =>
-						setSort([...sort, { attri: e.target.value }])
-					}
+					id="rating"
+					onChange={AttriHandler}
 				/>{" "}
-				Rating
+				<label for="rating"> Rating</label>
 				<br />
 				<input
 					type="radio"
-					value="customer"
+					value="count"
 					name="sort"
-					onChange={(e) =>
-						setSort([...sort, { attri: e.target.value }])
-					}
+					id="cust"
+					onChange={AttriHandler}
 				/>{" "}
-				Number of Purchase
+				<label for="cust"> Number of Purchase</label>
 			</div>
 			<div>
-				<p>Filter</p>
-				<input type="checkbox" id="filter" name="filter" value="Bike" />
-				<label for="filter"> Rating Above 4</label>
+				<p className="heading1">Filter</p>
+				<input
+					type="radio"
+					id="filter1"
+					name="filter"
+					value="4"
+					onChange={RatingHandler}
+				/>
+				<label for="filter1"> Rating Above 4</label>
 				<br />
 
-				<input type="checkbox" id="filter" name="filter" value="Bike" />
-				<label for="filter"> Rating Above 3</label>
+				<input
+					type="radio"
+					id="filter2"
+					name="filter"
+					value="3"
+					onChange={RatingHandler}
+				/>
+				<label for="filter2"> Rating Above 3</label>
+				<br />
+				<input
+					type="radio"
+					id="filtera"
+					name="filter"
+					value="2"
+					onChange={RatingHandler}
+				/>
+				<label for="filtera"> Rating Above 2</label>
+
+				<br />
+				<input
+					type="radio"
+					id="filterc"
+					name="filter"
+					value="0"
+					onChange={RatingHandler}
+				/>
+				<label for="filterc"> All Products</label>
+				<br />
 				<br />
 				<br />
 
-				<input type="checkbox" id="filter" name="filter" value="Bike" />
-				<label for="filter"> men's clothing</label>
+				<input
+					type="checkbox"
+					id="filter3"
+					name="filter3"
+					value="men's clothing"
+					onChange={CatHandler}
+				/>
+				<label for="filter3"> Men's Clothing</label>
 				<br />
 
-				<input type="checkbox" id="filter" name="filter" value="Bike" />
-				<label for="filter"> jewelery</label>
+				<input
+					type="checkbox"
+					id="filter4"
+					name="filter4"
+					value="jewelery"
+					onChange={CatHandler}
+				/>
+				<label for="filter4"> Jewelery</label>
 				<br />
 
-				<input type="checkbox" id="filter" name="filter" value="Bike" />
-				<label for="filter"> electronics</label>
+				<input
+					type="checkbox"
+					id="filter5"
+					name="filter5"
+					value="electronics"
+					onChange={CatHandler}
+				/>
+				<label for="filter5"> Electronic</label>
 				<br />
 
-				<input type="checkbox" id="filter" name="filter" value="Bike" />
-				<label for="filter"> women's clothing</label>
+				<input
+					type="checkbox"
+					id="filter6"
+					name="filter6"
+					value="women's clothing"
+					onChange={CatHandler}
+				/>
+				<label for="filter6"> Women's Clothing</label>
 				<br />
 
-				<input type="checkbox" id="filter" name="filter" value="Bike" />
-				<label for="filter"> Rating Above 3</label>
 				<br />
 			</div>
 		</Filter>
