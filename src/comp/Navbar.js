@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Bar = styled.div`
+	width: 100%;
 	display: flex;
 	padding: 1rem;
 	justify-content: space-between;
@@ -10,12 +11,10 @@ const Bar = styled.div`
 
 const Navbar = () => {
 	return (
-		<div>
-			<Bar>
-				<div>Logo</div>
-				<div>Home</div>
-			</Bar>
-		</div>
+		<Bar>
+			<div>Logo</div>
+			<div>Home</div>
+		</Bar>
 	);
 };
 

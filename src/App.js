@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 function App() {
 	return (
-		<div style={{ height: "100vh", margin: "-8px" }}>
+		<div style={{ height: "auto", margin: "-8px" }}>
 			<Navbar />
 			<Container>
 				<Filterbar />
