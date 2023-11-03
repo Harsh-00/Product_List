@@ -4,10 +4,10 @@ import ProductCard from "./ProductCard";
 import data from "../ApiData";
 
 const Items = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	padding: 1rem 2rem;
-	gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	padding: 2rem 4rem;
+	gap: 2rem;
 	background-color: yellow;
 	flex-grow: 8;
 `;
