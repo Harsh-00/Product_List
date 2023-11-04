@@ -15,7 +15,7 @@ git clone https://github.com/Harsh-00/Product_List.git
 
 ## 2.Navigate to the project directory:
 ```bash
-cd your-project
+cd Product_List
 ```
 
 
