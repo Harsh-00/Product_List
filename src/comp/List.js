@@ -11,7 +11,7 @@ const Items = styled.div`
 	gap: 2rem;
 	row-gap: 4rem;
 	background-color: #7c81ad;
-	${"" /* flex-grow: 1; */}
+	flex-grow: 1;
 
 	.footer {
 		position: absolute;
