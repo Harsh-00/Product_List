@@ -11,6 +11,7 @@ const Filter = styled.div`
 	padding: 1.5rem;
 	padding-top: 4rem;
 	width: 260px;
+	min-width: 190px;
 
 	.heading1 {
 		margin: 0;
@@ -32,7 +33,7 @@ const Filter = styled.div`
 	input {
 		margin-top: 12px;
 	}
-	@media (max-width: 440px) {
+	@media (max-width: 560px) {
 		position: absolute;
 		opacity: 0;
 	}

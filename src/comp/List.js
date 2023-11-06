@@ -23,7 +23,7 @@ const Items = styled.div`
 		gap: 2rem;
 	}
 
-	.fbtn {
+	.nbtn {
 		background-color: orange;
 		padding: 0.3rem 0.7rem;
 		border-radius: 15px;
@@ -40,6 +40,28 @@ const Items = styled.div`
 		}
 	}
 
+	.pbtn {
+		background-color: orange;
+		padding: 0.3rem 0.7rem;
+		border-radius: 15px;
+		cursor: pointer;
+		font-size: 1.3rem;
+
+		transition: all;
+		transition-timing-function: ease-in-out;
+		transition-duration: 150ms;
+
+		&:hover {
+			box-shadow: 0 0 5px 5px #f99417;
+			transform: scale(1.1);
+		}
+	}
+
+	.hid {
+		opacity: 0;
+		z-index: -1;
+	}
+
 	.page {
 		font-size: 1.4rem;
 		color: white;
@@ -50,16 +72,13 @@ const Items = styled.div`
 		padding-bottom: 10rem;
 	}
 
-	@media (min-width: 660px) and (max-width: 850px) {
+	@media (min-width: 840px) and (max-width: 1180px) {
 		grid-template-columns: repeat(2, 1fr);
 		padding: 2rem 1rem;
 		padding-bottom: 10rem;
-		.footer {
-			left: 30%;
-		}
 	}
 
-	@media (max-width: 660px) {
+	@media (max-width: 840px) {
 		grid-template-columns: repeat(1, 1fr);
 		padding: 2rem 1rem;
 		padding-bottom: 10rem;
@@ -69,8 +88,11 @@ const Items = styled.div`
 	}
 	@media (max-width: 440px) {
 		.footer {
-			left: 16%;
+			left: 40%;
+			flex-direction: column;
+			gap: 0;
 		}
+		padding-bottom: 15rem;
 	}
 `;
 const List = ({ Data, setData }) => {
@@ -96,21 +118,23 @@ const List = ({ Data, setData }) => {
 				<ProductCard info={item} key={item.id} />
 			))}
 			<div className="footer">
-				{currPage > 0 && (
-					<div className="fbtn" onClick={PrevHandler}>
-						Previous
-					</div>
-				)}
+				<div
+					className={currPage > 0 ? "pbtn" : "pbtn hid"}
+					onClick={PrevHandler}
+				>
+					Previous
+				</div>
 
 				<p className="page">
 					Page: {currPage + 1}/{pageCount + 1}
 				</p>
 
-				{currPage < pageCount && (
-					<div className="fbtn" onClick={NextHandler}>
-						Next
-					</div>
-				)}
+				<div
+					className={currPage < pageCount ? "nbtn" : "nbtn hid"}
+					onClick={NextHandler}
+				>
+					Next
+				</div>
 			</div>
 		</Items>
 	);

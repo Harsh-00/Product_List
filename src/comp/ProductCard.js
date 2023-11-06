@@ -11,7 +11,9 @@ const Card = styled.div`
 	flex-direction: column;
 	border-radius: 30px;
 	padding: 0px 4px;
-	width: 90%;
+	${"" /* width: 350px; */}
+	min-width: 250px;
+	flex-shrink: 1;
 	margin: auto;
 
 	transition: all;
@@ -88,6 +90,10 @@ const Card = styled.div`
 		&:hover {
 			transform: scale(1.2);
 		}
+	}
+	@media (min-width: 1900px) {
+		width: 500px;
+		padding: 30px 0;
 	}
 	@media (min-width: 768px) and (max-width: 1024px) {
 		.desc {
